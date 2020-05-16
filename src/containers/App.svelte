@@ -1,12 +1,20 @@
 <script>
-  import Taiwindcss from "../components/Tailwindcss.svelte";
+  import Tailwindcss from "../components/Tailwindcss.svelte";
+  import Header from "../components/Header.svelte";
+  import Main from "../components/Main.svelte";
+  import TimeLine from "../components/TimeLine.svelte";
+  import Sidebar from "../components/Sidebar.svelte";
 </script>
 
-<style>
-
+<style lang="postcss">
+  :global(body) {
+    @apply bg-gray-200 font-body;
+  }
 </style>
 
-<main>
-  <Taiwindcss />
-
-</main>
+<Tailwindcss />
+<Header />
+<Main>
+  <TimeLine />
+  <Sidebar />
+</Main>
