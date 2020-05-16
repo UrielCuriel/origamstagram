@@ -5,6 +5,7 @@
   export let url;
   export let user;
   export let description;
+  export let comments;
 </script>
 
 <style lang="postcss">
@@ -90,6 +91,6 @@
       <h3>{user.username}</h3>
       <span>{description}</span>
     </div>
-    <Comments />
+    <Comments {comments} />
   </div>
 </div>

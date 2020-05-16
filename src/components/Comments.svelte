@@ -1,5 +1,17 @@
 <script>
-  let comment = "";
+  export let comments = [];
+  function addComment(event) {
+    const msg = event.target.text.value;
+    if (msg.length > 3) {
+      const message = {
+        id: Date.now(),
+        text: msg,
+        username: "urielcuriel",
+      };
+      comments = [...comments, message];
+      event.target.text.value = "";
+    }
+  }
 </script>
 
 <style lang="postcss">
@@ -25,30 +37,28 @@
     @apply border-none rounded text-gray-600 text-sm outline-none w-full flex;
   }
   button {
-    @apply border-none rounded text-blue-300 pointer-events-none text-sm outline-none font-semibold flex;
-  }
-  button.active {
-    @apply text-blue-500 pointer-events-auto;
+    @apply border-none rounded text-blue-500 text-sm outline-none font-semibold flex;
   }
 </style>
 
 <div class="Comments">
   <div class="Comments-content">
-    <div class="Comments-users">
-      <h3>username</h3>
-      <span>comment</span>
-    </div>
+    {#each comments as comment (comment.id)}
+      <div class="Comments-users">
+        <h3>{comment.username}</h3>
+        <span>{comment.text}</span>
+      </div>
+    {/each}
   </div>
   <div class="Comments-add">
-    <form on:submit|preventDefault>
+    <form on:submit|preventDefault={addComment}>
       <label for="text" class="sr-only ">Comments</label>
       <input
         type="text"
         class="Comments-input"
         placeholder="Agregar Comentario ..."
-        bind:value={comment}
         id="text" />
-      <button type="submit" class:active={comment.length > 0}>Publicar</button>
+      <button type="submit">Publicar</button>
     </form>
   </div>
 </div>

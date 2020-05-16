@@ -406,5 +406,106 @@ const photos = [
     },
   },
 ];
-
-module.exports = { photos };
+const comments = [
+  {
+    id: "5ec07472a7575da127a7df9e",
+    username: "nisi",
+    text: "eu laborum nostrud duis anim",
+  },
+  {
+    id: "5ec0747206a9dfd5f3bf2c4d",
+    username: "tempor",
+    text: "eiusmod enim voluptate nulla laboris",
+  },
+  {
+    id: "5ec07472ed6d080b7dcdd069",
+    username: "laboris",
+    text: "officia labore ipsum anim magna",
+  },
+  {
+    id: "5ec0747260cc3057a3304681",
+    username: "adipisicing",
+    text: "laboris mollit ut eiusmod laborum",
+  },
+  {
+    id: "5ec07472cc79b6b166596eb5",
+    username: "consequat",
+    text: "sit culpa sunt excepteur velit",
+  },
+  {
+    id: "5ec074725a2f50c6261845d5",
+    username: "ut",
+    text: "sit adipisicing excepteur nostrud velit",
+  },
+  {
+    id: "5ec074723a2768bdfd7cdcae",
+    username: "est",
+    text: "qui veniam ut magna fugiat",
+  },
+  {
+    id: "5ec074724c82808e67702587",
+    username: "nostrud",
+    text: "Lorem veniam dolore aliqua id",
+  },
+  {
+    id: "5ec074720b1a22ce45366ff7",
+    username: "ipsum",
+    text: "adipisicing pariatur mollit elit ad",
+  },
+  {
+    id: "5ec074723bb03f0d011503df",
+    username: "deserunt",
+    text: "labore esse veniam minim ullamco",
+  },
+  {
+    id: "5ec074720514a610665b11ca",
+    username: "irure",
+    text: "ipsum ad consequat pariatur eiusmod",
+  },
+  {
+    id: "5ec07472fd4b7afa61db1234",
+    username: "sunt",
+    text: "magna enim culpa dolor in",
+  },
+  {
+    id: "5ec0747294717f400d62fd0b",
+    username: "laborum",
+    text: "aliqua commodo Lorem mollit ea",
+  },
+  {
+    id: "5ec074728c651705a2a72870",
+    username: "laboris",
+    text: "cillum non laborum occaecat proident",
+  },
+  {
+    id: "5ec074726e08caffce21c546",
+    username: "labore",
+    text: "aliqua quis magna eiusmod dolore",
+  },
+  {
+    id: "5ec07472ab653a2df5e7bd62",
+    username: "Lorem",
+    text: "tempor laborum nisi aute laboris",
+  },
+  {
+    id: "5ec07472e9ba5d6adc2de76d",
+    username: "dolore",
+    text: "ea deserunt deserunt voluptate occaecat",
+  },
+  {
+    id: "5ec074727c5203e83fd98f1a",
+    username: "nisi",
+    text: "qui sunt dolor nulla eiusmod",
+  },
+  {
+    id: "5ec074725c14dda5cb87d406",
+    username: "officia",
+    text: "aliqua velit anim Lorem pariatur",
+  },
+  {
+    id: "5ec07472ee28d22eddf9fe79",
+    username: "sint",
+    text: "pariatur in qui commodo eiusmod",
+  },
+];
+module.exports = { photos, comments };
