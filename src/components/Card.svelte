@@ -1,11 +1,34 @@
 <script>
   import Icon from "./Icon.svelte";
   import Comments from "./Comments.svelte";
-  export let id;
+  import Modal from "./Modal.svelte";
+  import Share from "./Share.svelte";
+
+  import { blur } from "svelte/transition";
+
+  import { likeCount } from "../store/store.js";
+
   export let url;
   export let user;
   export let description;
   export let comments;
+
+  let isModal = false;
+  let like = false;
+  let bookmark = false;
+
+  function handleModal() {
+    isModal = !isModal;
+  }
+
+  function handleLike() {
+    like = !like;
+    if (like) {
+      likeCount.update((count) => count + 1);
+    } else {
+      likeCount.update((count) => count - 1);
+    }
+  }
 </script>
 
 <style lang="postcss">
@@ -53,7 +76,14 @@
   }
 </style>
 
-<div class="Card" {id}>
+<div class="Card">
+  {#if isModal}
+    <div transition:blur>
+      <Modal>
+        <Share on:click={handleModal} />
+      </Modal>
+    </div>
+  {/if}
   <div class="Card-container">
     <div class="Card-header">
       <div class="Card-user">
@@ -68,7 +98,7 @@
       </div>
     </div>
     <div class="Card-photo">
-      <figure>
+      <figure on:dblclick={handleLike}>
         <img src={url} alt={description} />
         <caption>
           Photo by
@@ -80,11 +110,19 @@
     </div>
     <div class="Card-icons">
       <div class="Card-icons-first">
-        <Icon name="heart" />
-        <Icon name="send" />
+        <Icon
+          name="heart"
+          on:click={handleLike}
+          colorBase={like ? 'red-300' : 'gray-300'}
+          colorShape={like ? 'red-600' : 'gray-600'} />
+        <Icon name="send" on:click={handleModal} />
       </div>
       <div class="Card-icons-second">
-        <Icon name="book-closed" />
+        <Icon
+          name="book-closed"
+          colorBase={bookmark ? 'orange-300' : 'gray-300'}
+          colorShape={bookmark ? 'orange-600' : 'gray-600'}
+          on:click={() => (bookmark = !bookmark)} />
       </div>
     </div>
     <div class="Card-description">

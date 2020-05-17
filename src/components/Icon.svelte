@@ -9,11 +9,16 @@
 
 <style lang="postcss">
   .Icon {
-    @apply cursor-pointer inline-block mr-4;
+    @apply cursor-pointer inline-block;
   }
 </style>
 
-<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} class="Icon">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  class="Icon"
+  on:click>
   <use
     class={` icon-${colorBase} icon-shape-${colorShape}`}
     href={`${icons}#${name}`} />

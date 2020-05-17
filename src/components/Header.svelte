@@ -1,5 +1,7 @@
 <script>
   import Icon from "./Icon.svelte";
+
+  import { likeCount } from "../store/store.js";
 </script>
 
 <style lang="postcss">
@@ -25,7 +27,10 @@
     mix-blend-mode: screen;
   }
   .Header-nav ul li {
-    @apply inline-block ml-4;
+    @apply flex items-center ml-4 text-gray-600;
+  }
+  .Header-nav ul {
+    @apply flex;
   }
 </style>
 
@@ -39,6 +44,7 @@
         <ul>
           <li>
             <Icon name="heart" />
+            {$likeCount === 0 ? '' : $likeCount}
           </li>
           <li>
             <Icon name="user" />

@@ -1,7 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 
 // Genera las variantes de cada color para los iconos
-module.exports = plugin(function({ addComponents, theme }) {
+module.exports = plugin(function ({ addComponents, theme, add }) {
   const iconComponent = Object.entries(theme("colors"))
     .map(([color, values]) => {
       const base =
@@ -9,14 +9,14 @@ module.exports = plugin(function({ addComponents, theme }) {
           ? {
               [`use.icon-${color}`]: {
                 "--color-base": `theme("colors.${color}.600")`,
-                "--color-shape": `theme("colors.${color}.300")`
-              }
+                "--color-shape": `theme("colors.${color}.300")`,
+              },
             }
           : {
               [`use.icon-${color}`]: {
                 "--color-base": `${values}`,
-                "--color-shape": `${values}`
-              }
+                "--color-shape": `${values}`,
+              },
             };
 
       const colors = Object.entries(values)
@@ -24,16 +24,16 @@ module.exports = plugin(function({ addComponents, theme }) {
           ([variant, value]) =>
             value && {
               [`use.icon-${color}-${variant}`]: {
-                "--color-base": `${value}`
+                "--color-base": `${value}`,
               },
               [`use.icon-shape-${color}-${variant}`]: {
-                "--color-shape": `${value}`
-              }
+                "--color-shape": `${value}`,
+              },
             }
         )
         .reduce((a, b) => Object.assign({}, a, b));
       return { ...base, ...colors };
     })
     .reduce((a, b) => Object.assign({}, a, b));
-  addComponents(iconComponent);
+  addComponents({ ...iconComponent, "@variants hover": iconComponent });
 });
